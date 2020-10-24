@@ -1,9 +1,9 @@
 # Where Do Cal Students Go?
 
-| Title | Where Do Cal Students Go? |
+| Title | Spring 2020 Academic Changes |
 |-|-|
-| Developer    | [Alex Zhao](mailto:axyzhao@berkeley.edu) |
-| Link | http://projects.dailycal.org/2020/uc-berkeley-students-after-grad/ |
+| Developer    | Connor Lin and Ji Yeon Woo |
+| Link | http://projects.dailycal.org/ |
 
 
 ©2020 The Daily Californian
