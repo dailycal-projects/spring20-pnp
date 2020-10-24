@@ -104,7 +104,7 @@ var groupData = [
     y.domain([0, d3.max(groupData, function(key) { return d3.max(key.values, function(d) { return d.grpValue; }); })]);
 
     svg.append("g")
-      .style("font-size", font_size)
+      .style("font-size", "15px")
       .style("font-family", "benton-sans")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
