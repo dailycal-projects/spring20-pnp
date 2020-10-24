@@ -1,4 +1,4 @@
-# Where Do Cal Students Go?
+# Spring 2020 Academic Changes
 
 | Title | Spring 2020 Academic Changes |
 |-|-|
