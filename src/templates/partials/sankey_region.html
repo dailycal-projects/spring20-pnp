@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id='region_line'></div>
+  </body>
+<link rel="stylesheet" href="https://use.typekit.net/mfo3lll.css">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+  <head align='center'>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+      var svg_region = d3.select("#region_line").append("svg");
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'From');
+        data.addColumn('string', 'To');
+        data.addColumn('number', 'Percentage');
+        data.addRows([
+          [ 'Chemistry', 'Midwest', 5 ],
+          [ 'Chemistry', 'West (exc. CA)', 1 ],
+          [ 'Chemistry', 'South/Southeast', 3 ],
+          [ 'Chemistry', 'Central CA', 6 ],
+          [ 'Chemistry', 'LA', 8 ],
+          ['Chemistry', 'Northeast', 0],
+          [ 'Chemistry', 'SoCal (exc. LA)', 4 ],
+          [ 'Chemistry', 'International', 5 ],
+          [ 'Haas', 'Midwest', 5 ],
+          [ 'Haas', 'West (exc. CA)', 1 ],
+          [ 'Haas', 'South/Southeast', 3 ],
+          [ 'Haas', 'Central CA', 6 ],
+          [ 'Haas', 'LA', 8 ],
+          [ 'Haas', 'SoCal (exc. LA)', 4 ],
+          ['Haas', 'Northeast', 11],
+          [ 'Haas', 'International', 5 ],
+          [ 'CNR', 'Midwest', 1 ],
+          [ 'CNR', 'West (exc. CA)', 5 ],
+          [ 'CNR', 'South/Southeast', 4 ],
+          [ 'CNR', 'Northeast', 3],
+          [ 'CNR', 'Central CA', 10 ],
+          [ 'CNR', 'LA', 5 ],
+          [ 'CNR', 'SoCal (exc. LA)', 5 ],
+          [ 'CNR', 'International', 5 ],
+          [ 'L&S', 'Midwest', 2 ],
+          [ 'L&S', 'West (exc. CA)', 5 ],
+          [ 'L&S', 'South/Southeast', 3 ],
+          [ 'L&S', 'Northeast', 6],
+          [ 'L&S', 'Central CA', 6 ],
+          [ 'L&S', 'LA', 6 ],
+          [ 'L&S', 'SoCal (exc. LA)', 4 ],
+          [ 'L&S', 'International', 4 ],
+          [ 'Env. Design', 'Midwest', 0 ],
+          [ 'Env. Design', 'West (exc. CA)', 2 ],
+          [ 'Env. Design', 'South/Southeast', 0 ],
+          [ 'Env. Design', 'Central CA', 1 ],
+          [ 'Env. Design', 'Northeast', 2],
+          [ 'Env. Design', 'LA', 12 ],
+          [ 'Env. Design', 'SoCal (exc. LA)', 3 ],
+          [ 'Env. Design', 'International', 4 ],
+          [ 'Engineering', 'Midwest', 0 ],
+          [ 'Engineering', 'West (exc. CA)', 2 ],
+          [ 'Engineering', 'South/Southeast', 0 ],
+          [ 'Engineering', 'Northeast', 4],
+          [ 'Engineering', 'Central CA', 1 ],
+          [ 'Engineering', 'LA', 12 ],
+          [ 'Engineering', 'SoCal (exc. LA)', 3 ],
+          [ 'Engineering', 'International', 4 ],
+        ]);
+
+        var parent = document.getElementById('sankey_region');
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_region'));
+        width = Math.min(pageWidth, 800);
+        if (parent.clientWidth < 900) { width = parent.clientWidth; height = 700;}
+
+        svg_region
+            .attr("width", width)
+            .attr("height", 40)
+        svg_region.selectAll("text.region").remove();
+        svg_region.selectAll("line.region").remove();
+        svg_region.append("text")
+            .attr("class", "region")
+            .attr("x", 0)
+            .attr("y", 20)
+            .attr("font-size", "18px")
+            .attr("font-family", "Lato")
+            .attr("font-weight", 600)
+            .attr("fill", "black")
+            .text("College")
+        svg_region.append("text")
+            .attr("class", "region")
+            .attr("x", width - 70)
+            .attr("y", 20)
+            .attr("font-size", "20px")
+            .attr("font-family", "Lato")
+            .attr("font-weight", 600)
+            .attr("fill", "black")
+            .text("Region")
+        svg_region.append("line")
+            .attr("class", "region")
+            .attr("x1", 0)
+            .attr("y1", 30)
+            .attr("x2", width)
+            .attr("y2", 30)
+            .attr("stroke", "grey")
+            .attr("stroke-opacity", 0.5)
+            .attr("stroke-width", 1.5)
+
+        width = 800;
+        height = 500;
+        var colors = ["#338A6C", "#E35660", "#479BD1", "#8F679C",
+            "#F4803F", "#FED23B"]
+          if (parent.clientWidth < 900) { width = parent.clientWidth; height = 700;}
+          // Sets chart options.
+    	  	var options = {
+    	  		width: width,
+    	  		height: height,
+	  		sankey: {
+                                 link: {
+                                   color: {fill: '#aec6cf'}
+                                  },
+			      node: { colors: colors, label: {
+  	  			   fontSize: 14,
+                                     fontName: "benton-sans",
+	  			    },
+	  			    nodePadding: 25,
+	  			    width: 10,
+	  				  } },
+                          tooltip: {textStyle: {fontName: 'benton-sans'}},
+    	  			      };
+              chart.draw(data, options);
+      }
+      window.addEventListener("resize", drawChart);
+    </script>
+  </head>
+  <body>
+    <div id="sankey_region"></div>
+  </body>
+</html>

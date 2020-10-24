@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id='after_line'></div>
+</body>
+<link rel="stylesheet" href="https://use.typekit.net/mfo3lll.css">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+  <head align='center'>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+      var svg_after = d3.select('#after_line').append("svg");
+    
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'From');
+        data.addColumn('string', 'To');
+        data.addColumn('number', 'Percentage');
+        data.addRows([
+          [ 'Chemistry', 'Employed', 39 ],
+          [ 'Chemistry', 'Graduate school', 37 ],
+          [ 'Chemistry', 'Seeking work', 24 ],
+          [ 'Chemistry', 'Other', 1 ],
+          [ 'Engineering', 'Employed', 60 ],
+          [ 'Engineering', 'Graduate school', 28 ],
+          [ 'Engineering', 'Seeking work', 11 ],
+          [ 'Engineering', 'Other', 1 ],
+          [ 'Env. Design', 'Employed', 42 ],
+          [ 'Env. Design', 'Graduate school', 12 ],
+          [ 'Env. Design', 'Seeking work', 39 ],
+          [ 'Env. Design', 'Other', 7 ],
+          [ 'L&S', 'Employed', 51 ],
+          [ 'L&S', 'Graduate school', 19 ],
+          [ 'L&S', 'Seeking work', 22 ],
+          [ 'L&S', 'Other', 8 ],
+          [ 'CNR', 'Employed', 46 ],
+          [ 'CNR', 'Graduate school', 14 ],
+          [ 'CNR', 'Seeking work', 28 ],
+          [ 'CNR', 'Other', 12 ],
+          [ 'Haas', 'Employed', 83 ],
+          [ 'Haas', 'Graduate school', 3 ],
+          [ 'Haas', 'Seeking work', 10 ],
+          [ 'Haas', 'Other', 2 ],
+        ]);
+
+        var parent = document.getElementById('sankey_small');
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_small'));
+        width = Math.min(800, pageWidth);
+        if (parent.clientWidth < 900) { width = parent.clientWidth;}
+
+        svg_after
+            .attr("width", width)
+            .attr("height", 40)
+
+        svg_after.selectAll("text.after").remove();
+        svg_after.selectAll("line.after").remove();
+
+svg_after.append("text")
+    .attr("class", "after")
+    .attr("x", 0)
+    .attr("y", 20)
+    .attr("font-size", "18px")
+    .attr("font-family", "Lato")
+    .attr("font-weight", 600)
+    .attr("fill", "black")
+    .text("College")
+
+svg_after.append("text")
+    .attr("class", "after")
+    .attr("x", width - 60)
+    .attr("y", 20)
+    .attr("font-size", "18px")
+    .attr("font-family", "Lato")
+    .attr("font-weight", 600)
+    .attr("fill", "black")
+    .text("Status")
+
+svg_after.append("line")
+    .attr("class", "after")
+    .attr("x1", 0)
+    .attr("y1", 30)
+    .attr("x2", width)
+    .attr("y2", 30)
+    .attr("stroke", "grey")
+    .attr("stroke-opacity", 0.5)
+    .attr("stroke-width", 1.5)
+
+        // Sets chart options.
+        width = 800;
+        height = 500;
+        if (parent.clientWidth < 900) { width = parent.clientWidth; height = 700;}
+        var colors = ["#338A6C", "#E35660", "#479BD1", "#8F679C",
+            "#F4803F", "#FED23B"
+            ]
+
+        var options = {
+          width: width,
+          height: height,
+		    sankey: {
+                    link: {
+                      color: {fill: '#aec6cf'}
+                      },
+			      node: {
+                                   colors: colors,
+                                   label: {
+  				   fontSize: 14,
+                                   fontName: "benton-sans",
+				    },
+				    nodePadding: 25,
+				    width: 10,
+					  } },
+                        tooltip: {textStyle: {fontName: 'benton-sans'}},
+        };
+        // Instantiates and draws our chart, passing in some options.
+        chart.draw(data, options);
+      }
+
+      window.addEventListener("resize", drawChart);
+    </script>
+  </head>
+  <body>
+    <div id="sankey_small"></div>
+  </body>
+
+</html>

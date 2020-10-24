@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id='bus_line'></div>
+</body>
+<link rel="stylesheet" href="https://use.typekit.net/mfo3lll.css">
+<!-- Load in the d3 library -->
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+</script>
+  <head align='center'>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+      var svg_bus = d3.select("#bus_line").append("svg");
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'From');
+        data.addColumn('string', 'To');
+        data.addColumn('number', 'Number');
+        data.addRows([
+          ["Business","Data Analyst",5],
+["Economics","Data Analyst",9],
+["Business","Business/Financial Analyst",101],
+["Economics","Business/Financial Analyst",91],
+["Business","Consultant",68],
+["Economics","Consultant",55],
+["Business","Software Engineer",16],
+["Economics","Software Engineer",17],
+["Business","Product Manager",15],
+["Economics","Product Manager",1],
+["Business","Accountant/Auditor",31],
+["Economics","Accountant/Auditor",19],
+["Business","Investment Banking",56],
+["Economics","Investment Banking",36],
+["Business","Research Assistant",8],
+["Economics","Research Assistant",8],
+["Business","Educator",3],
+["Economics","Educator",1],
+["Business","Policy Analyst",1],
+["Economics","Policy Analyst",2],
+["Business","Legal Analyst",1],
+["Economics","Legal Analyst",3],
+["Business","Marketing",16],
+["Economics","Marketing",14],
+["Business","Reporter",2],
+["Economics","Reporter",1],
+        ]);
+
+        var parent = document.getElementById('sankey_bus');
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_bus'));
+        width = Math.min(600, pageWidth);
+        if (parent.clientWidth < 600) { width = parent.clientWidth; height = 700;}
+
+svg_bus
+    .attr("width", width)
+    .attr("height", 40);;
+
+svg_bus.selectAll("text.bus").remove();
+svg_bus.selectAll("line.bus").remove();
+
+svg_bus.append("text")
+    .attr("class", "bus")
+    .attr("x", 0)
+    .attr("y", 20)
+    .attr("font-size", "18px")
+    .attr("font-family", "Lato")
+    .attr("font-weight", 600)
+    .attr("fill", "black")
+    .text("Major");
+
+svg_bus.append("text")
+    .attr("class", "bus")
+    .attr("x", width - 60)
+    .attr("y", 20)
+    .attr("font-size", "18px")
+    .attr("font-family", "Lato")
+    .attr("font-weight", 600)
+    .attr("fill", "black")
+    .text("Job");
+
+svg_bus.append("line")
+    .attr("class", "bus")
+    .attr("x1", 0)
+    .attr("y1", 30)
+    .attr("x2", width)
+    .attr("y2", 30)
+    .attr("stroke", "grey")
+    .attr("stroke-opacity", 0.5)
+    .attr("stroke-width", 1.5);
+
+        width = 600;
+        height = 600;
+        if (parent.clientWidth < 600) { width = parent.clientWidth; height = 700;}
+        var colors = ["#338A6C", "#E35660", "#479BD1", "#8F679C",
+            "#F4803F", "#FED23B"]
+    		var options = {
+    			width: width,
+                        height: height,
+			sankey: {
+                               link: {
+                                 color: {fill: '#aec6cf'}
+                                },
+			      node: { colors: colors, label: {
+  				   fontSize: 14,
+                                   fontName : 'benton-sans',
+				    },
+                                nodePadding: 20,
+					  } },
+                        tooltip: {textStyle: {fontName: 'benton-sans'}},
+    				      };
+
+        // Instantiates and draws our chart, passing in some options.
+        chart.draw(data, options);
+      }
+      window.addEventListener("resize", drawChart);
+    </script>
+  </head>
+  <body>
+    <div id="sankey_bus"></div>
+  </body>
+</html>

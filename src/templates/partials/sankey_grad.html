@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id='grad_line'></div>
+  </body>
+<link rel="stylesheet" href="https://use.typekit.net/mfo3lll.css">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+</script>
+  <head align='center'>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+      var svg_grad = d3.select("#grad_line").append("svg");
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'From');
+        data.addColumn('string', 'To');
+        data.addColumn('number', 'Number');
+        data.addRows([
+          ["MCB","Master's",24],
+["MCB","Ph.D.",38],
+["MCB","MD",50],
+["MCB","JD",0],
+["Integrative Bio","Master's",19],
+["Integrative Bio","Ph.D.",7],
+["Integrative Bio","MD",9],
+["Integrative Bio","JD",0],
+["Public Health","Master's",45],
+["Public Health","Ph.D.",0],
+["Public Health","MD",12],
+["Public Health","JD",0],
+["Molecular Environmental Bio","Master's",0],
+["Molecular Environmental Bio","Ph.D.",0],
+["Molecular Environmental Bio","MD",5],
+["Molecular Environmental Bio","JD",0],
+["Political Science","Master's",19],
+["Political Science","Ph.D.",0],
+["Political Science","MD",0],
+["Political Science","JD",33],
+["History","Master's",17],
+["History","Ph.D.",0],
+["History","MD",0],
+["History","JD",10],
+["Philosophy","Master's",0],
+["Philosophy","Ph.D.",0],
+["Philosophy","MD",0],
+["Philosophy","JD",8],
+["English","Master's",27],
+["English","Ph.D.",6],
+["English","MD",0],
+["English","JD",6],
+["Legal Studies","Master's",7],
+["Legal Studies","Ph.D.",0],
+["Legal Studies","MD",0],
+["Legal Studies","JD",16],
+["Economics","Master's",58],
+["Economics","Ph.D.",11],
+["Economics","MD",0],
+["Economics","JD",7],
+["Sociology","Master's",20],
+["Sociology","Ph.D.",7],
+["Sociology","MD",0],
+["Sociology","JD",5],
+["Society & Environment","Master's",0],
+["Society & Environment","Ph.D.",0],
+["Society & Environment","MD",0],
+["Society & Environment","JD",5],
+["Physics","Master's",9],
+["Physics","Ph.D.",62],
+["Physics","MD",0],
+["Physics","JD",0],
+["Astrophysics","Master's",0],
+["Astrophysics","Ph.D.",19],
+["Astrophysics","MD",0],
+["Astrophysics","JD",0],
+["Math","Master's",43],
+["Math","Ph.D.",55],
+["Math","MD",0],
+["Math","JD",0],
+["Statistics","Master's",0],
+["Statistics","Ph.D.",14],
+["Statistics","MD",0],
+["Statistics","JD",0],
+["Computer Science","Master's",83],
+["Computer Science","Ph.D.",43],
+["Computer Science","MD",0],
+["Computer Science","JD",0],
+["Cognitive Science","Master's",21],
+["Cognitive Science","Ph.D.",8],
+["Cognitive Science","MD",0],
+["Cognitive Science","JD",0],
+["Psychology","Master's",20],
+["Psychology","Ph.D.",11],
+["Psychology","MD",0],
+["Psychology","JD",0],
+["EECS","Master's",66],
+["EECS","Ph.D.",46],
+["EECS","MD",0],
+["EECS","JD",0],
+["Materials Science","Master's",11],
+["Materials Science","Ph.D.",15],
+["Materials Science","MD",0],
+["Materials Science","JD",0],
+["Bioengineering","Master's",9],
+["Bioengineering","Ph.D.",22],
+["Bioengineering","MD",0],
+["Bioengineering","JD",0],
+["Mechanical Eng.","Master's",36],
+["Mechanical Eng.","Ph.D.",12],
+["Mechanical Eng.","MD",0],
+["Mechanical Eng.","JD",0],
+["Nuclear Eng.","Master's",0],
+["Nuclear Eng.","Ph.D.",6],
+["Nuclear Eng.","MD",0],
+["Nuclear Eng.","JD",0],
+["Engineering Physics","Master's",0],
+["Engineering Physics","Ph.D.",5],
+["Engineering Physics","MD",0],
+["Engineering Physics","JD",0],
+["Civil Eng.","Master's",35],
+["Civil Eng.","Ph.D.",9],
+["Civil Eng.","MD",0],
+["Civil Eng.","JD",0],
+["Environmental Sciences","Master's",6],
+["Environmental Sciences","Ph.D.",6],
+["Environmental Sciences","MD",0],
+["Environmental Sciences","JD",0],
+["Chemistry","Master's",0],
+["Chemistry","Ph.D.",41],
+["Chemistry","MD",0],
+["Chemistry","JD",0],
+["Chemical Eng.","Master's",0],
+["Chemical Eng.","Ph.D.",28],
+["Chemical Eng.","MD",0],
+["Chemical Eng.","JD",0],
+["Chemical Biology","Master's",0],
+["Chemical Biology","Ph.D.",21],
+["Chemical Biology","MD",0],
+["Chemical Biology","JD",0],
+["Business Administration","Master's",7],
+["Business Administration","Ph.D.",0],
+["Business Administration","MD",0],
+["Business Administration","JD",0],
+["Env. Econ & Policy","Master's",10],
+["Env. Econ & Policy","Ph.D.",0],
+["Env. Econ & Policy","MD",0],
+["Env. Econ & Policy","JD",0],
+["Architecture","Master's",12],
+["Architecture","Ph.D.",0],
+["Architecture","MD",0],
+["Architecture","JD",0],
+["Nutritional Sciences","Master's",8],
+["Nutritional Sciences","Ph.D.",0],
+["Nutritional Sciences","MD",0],
+["Nutritional Sciences","JD",0],
+["IEOR","Master's",7],
+["IEOR","Ph.D.",0],
+["IEOR","MD",0],
+["IEOR","JD",0],
+["Social Welfare","Master's",24],
+["Social Welfare","Ph.D.",0],
+["Social Welfare","MD",0],
+["Social Welfare","JD",0],
+["Media Studies","Master's",17],
+["Media Studies","Ph.D.",0],
+["Media Studies","MD",0],
+["Media Studies","JD",0],
+["Interdisciplinary Studies","Master's",9],
+["Interdisciplinary Studies","Ph.D.",0],
+["Interdisciplinary Studies","MD",0],
+["Interdisciplinary Studies","JD",0],
+["American Studies","Master's",5],
+["American Studies","Ph.D.",0],
+["American Studies","MD",0],
+["American Studies","JD",0],
+["Geography","Master's",5],
+["Geography","Ph.D.",0],
+["Geography","MD",0],
+["Geography","JD",0],
+["Peace & Conflict Studies","Master's",6],
+["Peace & Conflict Studies","Ph.D.",0],
+["Peace & Conflict Studies","MD",0],
+["Peace & Conflict Studies","JD",0],
+["Gender & Women's Studies","Master's",5],
+["Gender & Women's Studies","Ph.D.",0],
+["Gender & Women's Studies","MD",0],
+["Gender & Women's Studies","JD",0],
+["Anthropology","Master's",9],
+["Anthropology","Ph.D.",0],
+["Anthropology","MD",0],
+["Anthropology","JD",0],
+["Political Econ","Master's",11],
+["Political Econ","Ph.D.",0],
+["Political Econ","MD",0],
+["Political Econ","JD",0],
+["Linguistics","Master's",15],
+["Linguistics","Ph.D.",0],
+["Linguistics","MD",0],
+["Linguistics","JD",0],
+["Theater","Master's",5],
+["Theater","Ph.D.",0],
+["Theater","MD",0],
+["Theater","JD",0],
+["Rhetoric","Master's",8],
+["Rhetoric","Ph.D.",0],
+["Rhetoric","MD",0],
+["Rhetoric","JD",0],
+["Data Science","Master's",6],
+["Data Science","Ph.D.",0],
+["Data Science","MD",0],
+["Data Science","JD",0],
+        ]);
+
+var parent = document.getElementById('sankey_grad');
+var chart = new google.visualization.Sankey(document.getElementById('sankey_grad'));
+width = Math.min(pageWidth, 900);
+height = 1400;
+nodePadding = 14;
+if (parent.clientWidth < 900) {
+    width = parent.clientWidth;
+    height = 2000;
+    parent.clientHeight = height;
+    nodePadding = 25;
+}
+
+svg_grad
+    .attr("width", width)
+    .attr("height", 40);
+
+svg_grad.selectAll("text.grad").remove();
+svg_grad.selectAll("line.grad").remove();
+
+svg_grad.append("text")
+    .attr("class", "grad")
+    .attr("x", 0)
+    .attr("y", 20)
+    .attr("font-size", "18px")
+    .attr("font-family", "Lato")
+    .attr("font-weight", 600)
+    .attr("fill", "black")
+    .text("Major")
+
+svg_grad.append("text")
+    .attr("class", "grad")
+    .attr("x", width - 150)
+    .attr("y", 20)
+    .attr("font-size", "18px")
+    .attr("font-family", "Lato")
+    .attr("font-weight", 600)
+    .attr("fill", "black")
+    .text("Graduate Degree")
+
+svg_grad.append("line")
+    .attr("class", "grad")
+    .attr("x1", 0)
+    .attr("y1", 30)
+    .attr("x2", width)
+    .attr("y2", 30)
+    .attr("stroke", "grey")
+    .attr("stroke-opacity", 0.5)
+    .attr("stroke-width", 1.5)
+
+        var colors = ["#338A6C", "#E35660", "#479BD1", "#8F679C",
+            "#F4803F", "#FED23B"]
+width = Math.min(pageWidth, 900);
+height = 1200;
+nodePadding = 14;
+if (parent.clientWidth < 900) {
+    width = parent.clientWidth;
+    height = 2000;
+    parent.clientHeight = height;
+    nodePadding = 25;
+}
+          // Sets chart options.
+    	  	var options = {
+    	  		width: width,
+    	  		height: height,
+	  		sankey: {
+                                 link: {
+                                   color: {fill: '#aec6cf'}
+                                  },
+			      node: { colors: colors, label: {
+  	  			   fontSize: 13,
+                                     fontName: "benton-sans",
+	  			    },
+	  			    nodePadding: nodePadding,
+	  			    width: 10,
+	  				  } },
+                          tooltip: {textStyle: {fontName: 'benton-sans'}},
+    	  			      };
+              chart.draw(data, options);
+        }
+      window.addEventListener("resize", drawChart);
+    </script>
+  </head>
+  <body>
+    <div id="sankey_grad"></div>
+  </body>
+</html>

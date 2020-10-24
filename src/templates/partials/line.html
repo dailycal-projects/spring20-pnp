@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+</body>
+<!-- Load in the d3 library -->
+<link rel="stylesheet" href="https://use.typekit.net/mfo3lll.css">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+// 2. Use the margin convention practice
+var margin = {top: 25, right: 100, bottom: 50, left: 60},
+    width = Math.min((pageWidth) - margin.left - margin.right,
+      900 - margin.left - margin.right);
+    if (width < 300) {
+      width = 300;
+    }
+    height = 0.5 * width;
+
+var div = d3.select("body").append("div_line")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+// 5. X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([0, 5]) // input 
+    .range([0, width]); // output
+
+// 6. Y scale will use the randomly generate number 
+var yScale = d3.scaleLinear()
+    .domain([13000, 18000]) // input 
+    .range([height, 0]); // output 
+
+// 7. d3's line generator
+var line = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d.y); }) // set the y values for the line generator 
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+// 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
+// var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() } })
+var dataset = [
+              {"y": 17603 }, {"y": 15176}, {"y": 15502}, {"y": 14344}, {"y": 15253}, {"y": 14629}]
+
+// 1. Add the SVG to the page and employ #2
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var data = [2011, 2012, 2013, 2014, 2015, 2016]
+var xScaleLabels = d3
+  .scalePoint()
+  .domain(data)
+  .rangeRound([0, width]); // In pixels
+
+var axisTop2 = d3
+  .axisBottom()
+  .scale(xScaleLabels)
+  .ticks(data.length);
+
+var yAxis = d3.axisLeft(yScale)
+              .ticks(4)
+
+// 3. Call the x axis in a group tag
+svg.append("g")
+    .style("font-family", "benton-sans")
+    .style("font-size", "16px")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(axisTop2); // Create an axis component with d3.axisBottom
+
+// 4. Call the y axis in a group tag
+svg.append("g")
+    .style("font-size", "12px")
+    .style("font-family", "benton-sans")
+    .attr("class", "y axis")
+    .call(yAxis)
+
+// 9. Append the path, bind the data, and call the line generator 
+svg.append("path")
+    .datum(dataset) // 10. Binds data to the line 
+    .style("stroke", "#F4803F")
+    .attr("class", "line") // Assign a class for styling 
+    .attr("d", line); // 11. Calls the line generator 
+
+// 12. Appends a circle for each datapoint 
+svg.selectAll(".dot")
+    .data(dataset)
+  .enter().append("circle") // Uses the enter().append() method
+    .attr("class", "dot") // Assign a class for styling
+    .attr("cx", function(d, i) { return xScale(i) })
+    .attr("cy", function(d) { return yScale(d.y) })
+    .style("fill", "#F4803F")
+    .attr("r", 5)
+    .on("mouseover", function(d) {
+        d3.select(this).style("fill", d3.rgb("#F4803F").darker(2))
+        div.transition()
+          .duration(200)
+          .style("opacity", .9)
+          let p = "$" + d3.format(",")(d.y).toString()
+          div.html(p)
+              .style("left", (d3.event.pageX + 10) + "px")
+              .style("top", (d3.event.pageY - 15) + "px")
+              .style("font-size", "18px")
+              .style("font-family", "benton-sans");
+          })
+    .on("mouseout", function(d) {
+        d3.select(this).style("fill", "#F4803F")
+        div.transition()
+          .duration(300)
+          .style("opacity", 0);
+    });
+
+if (pageWidth < 500) {
+  svg.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 0 - (margin.top / 2.5))
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .style("font-family", "benton-sans")
+        .text("Average Financial Debt of UC Berkeley Graduates\n (Classes of 2011-2016)");
+}
+else {
+  svg.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 0 - (margin.top / 4))
+        .attr("text-anchor", "middle")
+        .style("font-size", "20px")
+        .style("font-family", "benton-sans")
+        .text("Average Financial Debt of UC Berkeley Graduates (Classes of 2011-2016)");
+}
+
+</script>
