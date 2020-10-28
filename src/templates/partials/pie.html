@@ -7,12 +7,12 @@
 <!--<center style='font-family:benton-sans'>Which graduate degrees draw students from this college?</br></br></center>-->
 <center style='font-family:benton-sans'>Among UC Berkeley alumni who choose to attend graduate school, what degrees do they pursue?</br></br></center>
 
-<button onclick="update(data1)">Chemistry</button>
-<button onclick="update(data2)">Engineering</button>
-<button onclick="update(data3)">Env. Design</button>
-<button onclick="update(data4)">L&S</button>
-<button onclick="update(data5)">CNR</button>
+<button onclick="update(data1)">L&S</button>
+<button onclick="update(data5)">Chemistry</button>
+<button onclick="update(data3)">CNR</button>
+<button onclick="update(data4)">Env. Design</button>
 <button onclick="update(data6)">Haas</button>
+<button onclick="update(data2)">Engineering</button>
 <button onclick="update(data7)">Overall</button>
 
 <!-- Create a div where the graph will take place -->
@@ -35,14 +35,13 @@ var svg = d3.select("#pie")
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-var data1 = {"values": {"PNP": 50, "Graded": 50}, "name": "Chemistry"};
-var data2 = {"values": {"PNP": 64, "Graded": 36}, "name": "Engineering"};
-var data3 = {"values": {"PNP": 59, "Graded": 41}, "name": "Env. Design"};
-var data4 = {"values": {"PNP": 62, "Graded": 38}, "name": "L&S"};
-var data5 = {"values": {"PNP": 55, "Graded": 45}, "name": "CNR"};
-var data6 = {"values": {"PNP": 66, "Graded": 34}, "name": "Haas"};
-var data7 = {"values": {"PNP": 61, "Graded": 39}, "name": "Overall"};
-
+var data1 = {"values": {"Master's": 55, "Ph.D.": 29, "Medical degree (MD)":7, "Law degree (JD)": 9}, "name": "L&S"};
+var data2 = {"values": {"Master's": 58, "Ph.D.": 42, "Medical degree (MD)":0, "Law degree (JD)": 0}, "name": "Engineering"};
+var data3 = {"values": {"Master's": 46, "Ph.D.": 20, "Medical degree (MD)":17, "Law degree (JD)": 17}, "name": "CNR"};
+var data4 = {"values": {"Master's": 100, "Ph.D.": 0, "Medical degree (MD)":0, "Law degree (JD)": 0}, "name": "Env. Design"};
+var data5 = {"values": {"Master's": 0, "Ph.D.": 100, "Medical degree (MD)":0, "Law degree (JD)": 0}, "name": "Chemistry"};
+var data6 = {"values": {"Master's": 100, "Ph.D.": 0, "Medical degree (MD)":0, "Law degree (JD)": 0}, "name": "Haas"};
+var data7 = {"values": {"Master's": 53, "Ph.D.": 35, "Medical degree (MD)":5, "Law degree (JD)": 7}, "name": "Overall"};
 
 var div = d3.select("#pie").append("div")
     .attr("class", "tooltip")
@@ -50,8 +49,9 @@ var div = d3.select("#pie").append("div")
 
 // set the color_pie scale
 var color_pie = d3.scaleOrdinal()
-  .domain(["a", "b"])
-  .range(["#E87876", "#AACD80"]);
+  .domain(["a", "b", "c", "d"])
+  //.range(["#ff9aa2", "#e2f0cb", "#80CEE1",  "#c7ceea"]);
+  .range(["#E87876", "#AACD80", "#70AADA", "#A07FAC"]);
 
 // A function that create / update the plot for a given variable:
 function update(data) {
@@ -95,6 +95,12 @@ svg.append("text")
           .duration(200)
           .style("opacity", .9)
       tmp = d.data.key
+      if (tmp == "Medical degree (MD)") {
+        tmp = "MD"
+      }
+      if (tmp == "Law degree (JD)") {
+        tmp = "JD"
+      }
       let p = tmp + ": \n" + d.data.value.toString() + "%"
       div.html(p)
           .style("left", (d3.event.pageX + 10) + "px")
@@ -119,7 +125,7 @@ svg.append("text")
 update(data7)
 
   var legend = svg.selectAll(".legend")
-      .data(["PNP", "Graded"])
+      .data(["Master's", "Ph.D.", "Medical degree (MD)", "Law degree (JD)"])
       .enter().append("g")
       .attr("class", "legend")
       .attr("transform", function(d,i) { return "translate(0," + i * 20 + ")"; })
