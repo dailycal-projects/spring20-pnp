@@ -21,24 +21,24 @@ var div = d3.select("body").append("div_line")
     .style("opacity", 0);
 // 5. X scale will use the index of our data
 var xScale = d3.scaleLinear()
-    .domain([0, 5]) // input 
+    .domain([0, 3]) // input 
     .range([0, width]); // output
 
 // 6. Y scale will use the randomly generate number 
 var yScale = d3.scaleLinear()
-    .domain([13000, 18000]) // input 
+    .domain([3, 4]) // input 
     .range([height, 0]); // output 
 
 // 7. d3's line generator
 var line = d3.line()
     .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
     .y(function(d) { return yScale(d.y); }) // set the y values for the line generator 
-    .curve(d3.curveMonotoneX) // apply smoothing to the line
+//    .curve(d3.curveMonotoneX) // apply smoothing to the line
 
 // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
 // var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() } })
 var dataset = [
-              {"y": 17603 }, {"y": 15176}, {"y": 15502}, {"y": 14344}, {"y": 15253}, {"y": 14629}]
+              {"y": 3.745986395}, {"y": 3.7696}, {"y": 3.733181818}, {"y": 3.898358209}]
 
 // 1. Add the SVG to the page and employ #2
 var svg = d3.select("body").append("svg")
@@ -47,7 +47,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var data = [2011, 2012, 2013, 2014, 2015, 2016]
+var data = ['2018 Fall', '2019 Spring', '2019 Fall', '2020 Spring']
 var xScaleLabels = d3
   .scalePoint()
   .domain(data)
@@ -97,7 +97,7 @@ svg.selectAll(".dot")
         div.transition()
           .duration(200)
           .style("opacity", .9)
-          let p = "$" + d3.format(",")(d.y).toString()
+          let p = d3.format(",")(d.y).toString()
           div.html(p)
               .style("left", (d3.event.pageX + 10) + "px")
               .style("top", (d3.event.pageY - 15) + "px")
@@ -118,7 +118,7 @@ if (pageWidth < 500) {
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
         .style("font-family", "benton-sans")
-        .text("Average Financial Debt of UC Berkeley Graduates\n (Classes of 2011-2016)");
+        .text("Averge GPA per College (Undergraduate Classes)");
 }
 else {
   svg.append("text")
@@ -127,7 +127,7 @@ else {
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
         .style("font-family", "benton-sans")
-        .text("Average Financial Debt of UC Berkeley Graduates (Classes of 2011-2016)");
+        .text("Averge GPA per College (Undergraduate Classes)");
 }
 
 </script>
