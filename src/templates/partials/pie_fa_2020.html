@@ -7,13 +7,13 @@
 <!--<center style='font-family:benton-sans'>Which graduate degrees draw students from this college?</br></br></center>-->
 <center style='font-family:benton-sans'>In Fall 2020, how many grades from each college were graded versus pass/no passed?</br></br></center>
 
-<button onclick="update(data11)">Chemistry</button>
-<button onclick="update(data22)">Engineering</button>
-<button onclick="update(data33)">Env. Design</button>
-<button onclick="update(data44)">L&S</button>
-<button onclick="update(data55)">CNR</button>
-<button onclick="update(data66)">Haas</button>
-<button onclick="update(data77)">Overall</button>
+<button onclick="update1(data11)">Chemistry</button>
+<button onclick="update1(data22)">Engineering</button>
+<button onclick="update1(data33)">Env. Design</button>
+<button onclick="update1(data44)">L&S</button>
+<button onclick="update1(data55)">CNR</button>
+<button onclick="update1(data66)">Haas</button>
+<button onclick="update1(data77)">Overall</button>
 
 <!-- Create a div where the graph will take place -->
 <div id="pie_fa"></div>
@@ -54,7 +54,7 @@ var color_pie = d3.scaleOrdinal()
   .range(["#E87876", "#AACD80"]); //change this
 
 // A function that create / update the plot for a given variable:
-function update(data) {
+function update1(data) {
 
 //update text 
 length = data.name.length
@@ -118,9 +118,9 @@ fa_svg.append("text")
 }
 
 // Initialize the plot with the first dataset
-update(data77)
+update1(data77)
 
-  var legend = svg1.selectAll(".legend")
+  var legend = fa_svg.selectAll(".legend")
       .data(["PNP", "Graded"])
       .enter().append("g")
       .attr("class", "legend")
