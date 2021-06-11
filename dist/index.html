@@ -83,10 +83,9 @@
     <p class="subhead" style='font-family:tiempos'> Pass/No Pass, Remote Learning</p>
     <div class="info">
         <p>
-            By <span class="byline"><a href="###" target="_blank">Shannon Bonet</a>, 
-                <a href="###" target="_blank">Jenna Woo</a>, and 
-                <a href="###" target="_blank">Connor Lin</a>
-            </span> <br /> <span class="timestamp"><time datetime="2020-07-24T08:00-0800">JUNE __, 2021</time></span>
+            By <span class="byline"><a href="###" target="_blank">Shannon Bonet</a> and 
+                <a href="###" target="_blank">Jenna Woo</a>
+            </span> <br /> <span class="timestamp"><time datetime="2020-07-24T08:00-0800">JUNE 11, 2021</time></span>
             </br>
             </br>
         </p>
@@ -95,12 +94,12 @@
 
 
       <figure class="no-gutters-phone">
-        <img src="https://www.dailycal.org/assets/uploads/2020/09/affirmativeaction_irelandwagner_Staff.jpg"></br>
-      <figcaption class="figcaption">In November, California's voters will once again decide on affirmative action.  <figcredit style='font-family:benton-sans'>SAMUEL ALBILLO | SENIOR STAFF</figcaption>
+        <img src="###"></br>
+      <figcaption class="figcaption"> Image Caption <figcredit style='font-family:benton-sans'>AUTHOR | SENIOR STAFF</figcaption>
       </figure>
       
       <div class="story">
-        <p align="justify"><span class='dropcap'>F</span>or 25 years, Proposition 209 has banned the consideration of race in admissions at state institutions like UC Berkeley. On November 3, California’s voters will once again consider the question of affirmative action through the ballot proposition Proposition 16, also known as the Repeal Proposition 209 Affirmative Action Amendment. Proposition 16 is a constitutional amendment that would repeal California’s ban on affirmative action. If passed, the amendment would allow public universities like UC Berkeley to implement affirmative action programs within the bounds of federal law.</p>
+        <p align="justify"><span class='dropcap'>I</span>n March 2020, UC Berkeley implemented a universal pass/no pass grading system, setting a campus precedent for an adjusted grading system during remote schooling. Adjustments were extended through Fall 2020 and Spring 2021, with various differences between colleges. </p>
       </div>
 
       <center><!DOCTYPE html>
@@ -326,6 +325,11 @@ svg.append("text")
   legend.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1");
 
 </script></center> 
+      <div class="story">
+        <p align="justify"> The bar graph shows the number of letter grades requested by students before and during 
+          the pandemic. In Spring 2020, during universal pass/no pass, requested grades were half of their usual amount. Fall 2020 was closer to prior semesters, but still fell short overall. College of Natural Resources was the only college that surpassed all prior numbers. 
+           </p>
+      </div>
       <center><!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://use.typekit.net/mfo3lll.css">
@@ -371,7 +375,7 @@ var data5 = {"values": {"PNP": 55, "Graded": 45}, "name": "CNR"};
 var data6 = {"values": {"PNP": 66, "Graded": 34}, "name": "Haas"};
 var data7 = {"values": {"PNP": 61, "Graded": 39}, "name": "Overall"};
 
-var div2 = d3.select("#pie_sp").append("div")
+var div = d3.select("#pie_sp").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
@@ -418,12 +422,12 @@ svg.append("text")
     .style("opacity", 1)
     .on("mouseover", function(d) {
       d3.select(this).style("fill", d3.rgb(color_pie(d.data.key)).darker(2))
-      div2.transition()
+      div.transition()
           .duration(200)
           .style("opacity", .9)
       tmp = d.data.key
       let p = tmp + ": \n" + d.data.value.toString() + "%"
-      div2.html(p)
+      div.html(p)
           .style("left", (d3.event.pageX + 10) + "px")
           .style("top", (d3.event.pageY - 15) + "px")
           .style("font-size", "12px")
@@ -431,7 +435,7 @@ svg.append("text")
     })
     .on("mouseout", function(d) {
       d3.select(this).style("fill", color_pie(d.data.key))
-      div2.transition()
+      div.transition()
           .duration(300)
           .style("opacity", 0);
     });
@@ -472,6 +476,11 @@ update(data7)
 </script>
 </html>
 </center> 
+      <div class="story">
+        <p align="justify"> 
+          In Spring 2020, 61% of grades across all undergraduate schools were P/NP. Haas had the highest at 66%, with College of Engineering following closely at 64%. The lowest percentage is held by the College of Chemistry at 50%. The Daily Californian previously found that chemistry students are the most likely to attend graduate school immediately after undergrad. Haas and engineering students are the most likely to be employed. 
+           </p>
+      </div>
       <center><!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://use.typekit.net/mfo3lll.css">
@@ -481,13 +490,13 @@ update(data7)
 <!--<center style='font-family:benton-sans'>Which graduate degrees draw students from this college?</br></br></center>-->
 <center style='font-family:benton-sans'>In Fall 2020, how many grades from each college were graded versus pass/no passed?</br></br></center>
 
-<button onclick="update(data1)">Chemistry</button>
-<button onclick="update(data2)">Engineering</button>
-<button onclick="update(data3)">Env. Design</button>
-<button onclick="update(data4)">L&S</button>
-<button onclick="update(data5)">CNR</button>
-<button onclick="update(data6)">Haas</button>
-<button onclick="update(data7)">Overall</button>
+<button onclick="update1(data11)">Chemistry</button>
+<button onclick="update1(data22)">Engineering</button>
+<button onclick="update1(data33)">Env. Design</button>
+<button onclick="update1(data44)">L&S</button>
+<button onclick="update1(data55)">CNR</button>
+<button onclick="update1(data66)">Haas</button>
+<button onclick="update1(data77)">Overall</button>
 
 <!-- Create a div where the graph will take place -->
 <div id="pie_fa"></div>
@@ -502,36 +511,38 @@ var width = 500
 // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
 var radius = Math.min(width, height) / 2 - margin;
 
-var svg = d3.select("#pie_fa")
+var fa_svg = d3.select("#pie_fa")
   .append("svg")
     .attr("width", width)
     .attr("height", height)
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-var data1 = {"values": {"PNP": 25, "Graded": 75}, "name": "Chemistry"};
-var data2 = {"values": {"PNP": 39, "Graded": 61}, "name": "Engineering"};
-var data3 = {"values": {"PNP": 21, "Graded": 79}, "name": "Env. Design"};
-var data4 = {"values": {"PNP": 30, "Graded": 70}, "name": "L&S"};
-var data5 = {"values": {"PNP": 28, "Graded": 72}, "name": "CNR"};
-var data6 = {"values": {"PNP": 32, "Graded": 68}, "name": "Haas"};
-var data7 = {"values": {"PNP": 31, "Graded": 69}, "name": "Overall"};
+var data11 = {"values": {"PNP": 25, "Graded": 75}, "name": "Chemistry"};
+var data22 = {"values": {"PNP": 39, "Graded": 61}, "name": "Engineering"};
+var data33 = {"values": {"PNP": 21, "Graded": 79}, "name": "Env. Design"};
+var data44 = {"values": {"PNP": 30, "Graded": 70}, "name": "L&S"};
+var data55 = {"values": {"PNP": 28, "Graded": 72}, "name": "CNR"};
+var data66 = {"values": {"PNP": 32, "Graded": 68}, "name": "Haas"};
+var data77 = {"values": {"PNP": 31, "Graded": 69}, "name": "Overall"};
 
 var div1 = d3.select("#pie_fa").append("div")
-    .attr("class", "tooltip-donut")
+    .attr("class", "tooltip")
     .style("opacity", 0);
 
 
 // set the color_pie scale
 var color_pie = d3.scaleOrdinal()
   .domain(["a", "b"])
-  .range(["#E87876", "#AACD80"]);
+  .range(["#E87876", "#AACD80"]); //change this
 
 // A function that create / update the plot for a given variable:
-function update(data) {
-length = data.name.length;
-svg.selectAll("text.title").remove();
-svg.append("text")
+function update1(data) {
+
+//update text 
+length = data.name.length
+fa_svg.selectAll("text.title").remove();
+fa_svg.append("text")
     .attr("class", "title")
     .attr("x", 0 - (length * 3.2))
     .attr("y", 0)
@@ -542,12 +553,12 @@ svg.append("text")
 
   // Compute the position of each group on the pie:
   var pie = d3.pie()
-    .value(function(d) {return d.value; })
-    .sort(function(a, b) { console.log(a) ; return d3.ascending(a.key, b.key);} ) // This make sure that group order remains the same in the pie chart
+    .value(function(d)   { console.log("WHAT IS D" , d.value) ; return d.value; })
+    .sort(function(a, b) { return d3.ascending(a.key, b.key);} ) // This make sure that group order remains the same in the pie chart
   var data_ready = pie(d3.entries(data.values))
 
   // map to data
-  var u = svg.selectAll("path")
+  const u = fa_svg.selectAll("path")
     .data(data_ready)
 
   // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
@@ -590,9 +601,9 @@ svg.append("text")
 }
 
 // Initialize the plot with the first dataset
-update(data7)
+update1(data77)
 
-  var legend = svg.selectAll(".legend")
+  var legend = fa_svg.selectAll(".legend")
       .data(["PNP", "Graded"])
       .enter().append("g")
       .attr("class", "legend")
@@ -620,8 +631,10 @@ update(data7)
 </html>
 </center> 
       <div class="story">
-        <p align="justify">Next, we plot the admit rate of different ethnic groups from 1994 to 2019. Admit rates are the part of the college pipeline that administrators have the most direct control over.</p>
-    </div>
+        <p align="justify"> 
+          By Fall 2020, only 31% of grades were P/NP. College of Environmental Design had the lowest percentage of P/NP grades at 21%. Similarly, only 25% of chemistry grades were P/NP. By contrast, 39% of engineering grades were P/NP, a 7% difference from the next lowest percentage held by Haas. Interestingly, Haas students had stricter grading policies for Fall 2020 and Spring 2021, only allowing one business course per semester to be taken P/NP. In their policy announcement, Haas stated they “must also consider the academic implications and potential negative impact on students for career and graduate school opportunities.” 
+           </p>
+      </div>
 
     <div class="nerd-box">
     </body>
