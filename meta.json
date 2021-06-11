@@ -1,23 +1,23 @@
 {
   "id": "2784169741",
-  "publishPath": "2021/remote-grading-policy/",
-  "url": "http://projects.dailycal.org/2021/remote-grading-policy/",
+  "publishPath": "2021/online-learning-sucks/",
+  "url": "http://projects.dailycal.org/2021/online-classes-sucks/",
   "timestamp": "2021-06-10T08:13-0400",
   "dateline": "06/10/21 08:13 PM EDT",
   "header": {
-    "headline": "Remote Grading Policy",
-    "subhed": "A look at the lives of UC Berkeley students after graduation",
+    "headline": "'Online Classes Suck'",
+    "subhed": "Examining grading trends after a year of pass/no pass policies",
     "byline": "Shannon Bonet, Connor Lin, Jenna Woo",
     "byline_link": "https://www.dailycal.org/"
   },
   "share": {
     "fbook": {
-      "card_title": "Remote Grading Policy",
-      "card_description": "Examining trends in remote grading options"
+      "card_title": "'Online Classes Suck'",
+      "card_description": "Examining grading trends after a year of pass/no pass policies"
     },
     "twitter": {
-      "card_title": "Remote Grading Policy",
-      "share_tweet": "Examining trends in remote grading options"
+      "card_title": "'Online Classes Suck'",
+      "share_tweet": "Examining grading trends after a year of pass/no pass policies"
     },
     "image": {
       "url": "https://www.dailycal.org/assets/uploads/2020/05/graduation_karenchow_file.jpg",
@@ -26,6 +26,6 @@
       "width": "900",
       "height": "580"
     },
-    "keywords": "Daily Cal, graduation, grad school, careers"
+    "keywords": "Daily Cal, remote learning, P/NP, online school"
   }
 }
