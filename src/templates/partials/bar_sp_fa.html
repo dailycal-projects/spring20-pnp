@@ -6,60 +6,60 @@
 <script>
 
 var groupData = [
+                  { key: "Overall", values:
+                                              [
+                                                {grpName:'2019 spring', grpValue:96773},
+                                                {grpName:'2019 fall', grpValue:103747},
+                                                {grpName:'2020 spring', grpValue:49327},
+                                                {grpName:'2020 fall', grpValue:81772},
+                                              ]
+                 },
                  { key: "Chemistry", values:
                                               [
-                                                {grpName:'2019 Spring', grpValue:5307},
-                                                {grpName:'2019 Fall', grpValue:6344},
-                                                {grpName:'2020 Spring', grpValue:2807},
-                                                {grpName:'2020 Fall', grpValue:5503},
+                                                {grpName:'2019 spring', grpValue:5307},
+                                                {grpName:'2019 fall', grpValue:6344},
+                                                {grpName:'2020 spring', grpValue:2807},
+                                                {grpName:'2020 fall', grpValue:5503},
                                               ]
                  },
                  { key: "Engineering", values:
                                               [
-                                                {grpName:'2019 Spring', grpValue:15895},
-                                                {grpName:'2019 Fall', grpValue:17318},
-                                                {grpName:'2020 Spring', grpValue:7847},
-                                                {grpName:'2020 Fall', grpValue:12679},
+                                                {grpName:'2019 spring', grpValue:15895},
+                                                {grpName:'2019 fall', grpValue:17318},
+                                                {grpName:'2020 spring', grpValue:7847},
+                                                {grpName:'2020 fall', grpValue:12679},
                                               ]
                  },
                  { key: "Env. Design", values:
                                               [
-                                                {grpName:'2019 Spring', grpValue:2040},
-                                                {grpName:'2019 Fall', grpValue:2129},
-                                                {grpName:'2020 Spring', grpValue:7847},
-                                                {grpName:'2020 Fall', grpValue:1886},
+                                                {grpName:'2019 spring', grpValue:2040},
+                                                {grpName:'2019 fall', grpValue:2129},
+                                                {grpName:'2020 spring', grpValue:7847},
+                                                {grpName:'2020 fall', grpValue:1886},
                                               ]
                  },
                  { key: "L&S", values:
                                               [
-                                                {grpName:'2019 Spring', grpValue:59783},
-                                                {grpName:'2019 Fall', grpValue:61696},
-                                                {grpName:'2020 Spring', grpValue:29955},
-                                                {grpName:'2020 Fall', grpValue:52262},
+                                                {grpName:'2019 spring', grpValue:59783},
+                                                {grpName:'2019 fall', grpValue:61696},
+                                                {grpName:'2020 spring', grpValue:29955},
+                                                {grpName:'2020 fall', grpValue:52262},
                                               ]
                  },
                  { key: "CNR", values:
                                               [
-                                                {grpName:'2019 Spring', grpValue:5196},
-                                                {grpName:'2019 Fall', grpValue:5030},
-                                                {grpName:'2020 Spring', grpValue:3192},
-                                                {grpName:'2020 Fall', grpValue:5537},
+                                                {grpName:'2019 spring', grpValue:5196},
+                                                {grpName:'2019 fall', grpValue:5030},
+                                                {grpName:'2020 spring', grpValue:3192},
+                                                {grpName:'2020 fall', grpValue:5537},
                                               ]
                  },
                  { key: "Haas", values:
                                               [
-                                                {grpName:'2019 Spring', grpValue:4369},
-                                                {grpName:'2019 Fall', grpValue:4825},
-                                                {grpName:'2020 Spring', grpValue:1961},
-                                                {grpName:'2020 Fall', grpValue:3905},
-                                              ]
-                 },
-                 { key: "Overall", values:
-                                              [
-                                                {grpName:'2019 Spring', grpValue:96773},
-                                                {grpName:'2019 Fall', grpValue:103747},
-                                                {grpName:'2020 Spring', grpValue:49327},
-                                                {grpName:'2020 Fall', grpValue:81772},
+                                                {grpName:'2019 spring', grpValue:4369},
+                                                {grpName:'2019 fall', grpValue:4825},
+                                                {grpName:'2020 spring', grpValue:1961},
+                                                {grpName:'2020 fall', grpValue:3905},
                                               ]
                  }
                     ];
@@ -95,7 +95,7 @@ var groupData = [
 
     var yAxis = d3.axisLeft().scale(y);
 
-    var color = d3.scaleOrdinal().range(["#AB4B50", "#ED9791", "#215775", "#479BD1"]);
+    var color = d3.scaleOrdinal().range(["#a1a8d0","#3c8284", "#fcba64", "#e79e85"]);
 
 
     var svg = d3.select("#line").append("svg")
@@ -184,15 +184,15 @@ svg.append("text")
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
         .style("font-family", "benton-sans")
-        .text("Number of Letter Grades Requested");
+        .text("Number of letter grades requested");
 
 svg.append("text")
         .attr("x", width)
         .attr("y", height + 40)
-         .style("font-size", "12px")
-         .style("font-family", "benton-sans")
-          .style("font-style", "italic")
-         .text("Source: Cal Answers");
+        .style("font-size", "12px")
+        .style("font-family", "benton-sans")
+        .style("font-style", "italic")
+        .text("Source: Cal Answers");
 
       //Legend
 
