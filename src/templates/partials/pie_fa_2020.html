@@ -9,7 +9,7 @@
 
 <button class="fill" onclick=update1(data11)>Chemistry</button>
 <button class="fill" onclick=update1(data22)>Engineering</button>
-<button class="fill" onclick=update1(data33)>CED</button>
+<button class="fill" onclick=update1(data33)>Env Design</button>
 <button class="fill" onclick=update1(data44)>L&S</button>
 <button class="fill" onclick=update1(data55)>CNR</button>
 <button class="fill" onclick=update1(data66)>Haas</button>
@@ -37,7 +37,7 @@ var fa_svg = d3.select("#pie_fa")
 
 var data11 = {"values": {"PNP": 25, "Graded": 75}, "name": "Chemistry"};
 var data22 = {"values": {"PNP": 39, "Graded": 61}, "name": "Engineering"};
-var data33 = {"values": {"PNP": 21, "Graded": 79}, "name": "CED"};
+var data33 = {"values": {"PNP": 21, "Graded": 79}, "name": "Env Design"};
 var data44 = {"values": {"PNP": 30, "Graded": 70}, "name": "L&S"};
 var data55 = {"values": {"PNP": 28, "Graded": 72}, "name": "CNR"};
 var data66 = {"values": {"PNP": 32, "Graded": 68}, "name": "Haas"};
@@ -51,7 +51,7 @@ var div1 = d3.select("#pie_fa").append("div")
 // set the color_pie scale
 var color_pie = d3.scaleOrdinal()
   .domain(["a", "b"])
-  .range(["#fcba64", "#af5845"]); 
+  .range(["#fcba64", "#af5845"]); //change this
 
 // A function that create / update the plot for a given variable:
 function update1(data) {
