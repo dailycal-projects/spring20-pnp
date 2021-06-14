@@ -2,7 +2,7 @@
 
 | Title | Spring 2020 Academic Changes |
 |-|-|
-| Developer    | Shannon Bonet, Ji Yeon Woo and Connor Lin|
+| Developer    | Shannon Bonet, Connor Lin, and Ji Yeon Woo |
 | Link | http://projects.dailycal.org/ |
 
 
