@@ -30,7 +30,7 @@ var groupData = [
                                                 {grpName:'2020 fall', grpValue:12679},
                                               ]
                  },
-                 { key: "Env. Design", values:
+                 { key: "CED", values:
                                               [
                                                 {grpName:'2019 spring', grpValue:2040},
                                                 {grpName:'2019 fall', grpValue:2129},
@@ -85,14 +85,14 @@ var groupData = [
     }
     height = 0.7 * width;
 
-    var x0  = d3.scaleBand().rangeRound([0, width], .3);
+    var x0  = d3.scaleBand().rangeRound([0, width + 150]);
     var x1  = d3.scaleBand().paddingInner(0).paddingOuter(0.6);
     var x2  = d3.scaleBand().paddingInner(0).paddingOuter(0.3);
     var y   = d3.scaleLinear().rangeRound([height, 0]);
 
     var xAxis = d3.axisBottom().scale(x0)
                                 .tickValues(groupData.map(d=>d.key));
-
+                              
     var yAxis = d3.axisLeft().scale(y);
 
     var color = d3.scaleOrdinal().range(["#a1a8d0","#3c8284", "#fcba64", "#e79e85"]);
@@ -187,8 +187,8 @@ svg.append("text")
         .text("Number of letter grades requested");
 
 svg.append("text")
-        .attr("x", width)
-        .attr("y", height + 40)
+        .attr("x", width + 30)
+        .attr("y", height + 50)
         .style("font-size", "12px")
         .style("font-family", "benton-sans")
         .style("font-style", "italic")
